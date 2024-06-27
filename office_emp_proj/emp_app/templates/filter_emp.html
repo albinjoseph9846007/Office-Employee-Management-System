@@ -1,0 +1,58 @@
+{% extends 'nav.html' %}
+{% block content%}
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+        }
+
+        body {
+            background-image: url('https://cdn.pixabay.com/photo/2020/06/17/13/59/office-5309654_1280.jpg'); /* Replace with the URL of your background image */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background for better readability */
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .table {
+            background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent background for the table */
+        }
+    </style>
+</head>
+<body>
+    <br><br>
+    <div class="container">
+        <div class="jumbotron">
+            <div class="card"><br>
+                <h1 style="text-align: center;">Filter Employee Details</h1><hr>
+                <div class="card-body">
+                    <form action="/filter_emp" method="POST">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                          <label for="name" class="form-label"><h5>Employee First / Last Name</h5></label>
+                          <input type="text" class="form-control" id="name" name="name" value="{{ name }}">
+                        </div>
+                          <div class="mb-3">
+                            <label for="dept" class="form-label"><h5>Department</h5></label>
+                            <input type="text" class="form-control" id="dept" name="dept" value="{{ dept }}">
+                          </div>
+                          <div class="mb-3">
+                            <label for="Role" class="form-label"><h5>Role</h5></label>
+                            <input type="text" class="form-control" id="Role" name="role" value="{{ role }}">
+                          </div><br>
+                        <button type="submit" class="btn btn-primary"><h5>Submit</h5></button>
+                      </form>
+                      <br>
+                      <table class="table table-light table-striped">
+                        <!-- Table content here -->
+                      </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock %}

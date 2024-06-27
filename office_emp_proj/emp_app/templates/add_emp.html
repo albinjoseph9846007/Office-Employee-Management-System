@@ -1,0 +1,90 @@
+{% extends 'nav.html' %}
+{% block content%}
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+        }
+
+        body {
+            background-image: url('https://cdn.pixabay.com/photo/2017/08/31/11/43/man-2700445_1280.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 50px; /* Adjusted to center vertically */
+        }
+
+        .card {
+            background-color: rgba(245, 245, 245, 0.8); /* Light mode background color */
+            color: #000; /* Text color */
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .form-label {
+            color: #000; /* Label text color */
+        }
+
+        .btn-back {
+            margin-top: 20px; /* Spacing for the back button */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="jumbotron">
+            <div class="card">
+                <h1 style="text-align: center;">Add an Employee</h1>
+                <hr>
+                <div class="card-body">
+                    <form action="/add_emp" method="POST">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                          <label for="First_name" class="form-label">First Name</label>
+                          <input type="text" class="form-control" id="First_name" name="first_name" value="{{ first_name }}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="Last_name" class="form-label">Last Name</label>
+                            <input type="text" class="form-control" id="Last_name" name="last_name" value="{{ last_name }}">
+                          </div>
+                          <div class="mb-3">
+                            <label for="Salary" class="form-label">Salary</label>
+                            <input type="number" class="form-control" id="Salary" name="salary" value="{{ salary }}">
+                          </div>
+                          <div class="mb-3">
+                            <label for="Bonus" class="form-label">Bonus</label>
+                            <input type="number" class="form-control" id="Bonus" name="bonus" value="{{ bonus }}">
+                          </div>
+                          <div class="mb-3">
+                            <label for="Phone" class="form-label">Phone Number</label>
+                            <input type="number" class="form-control" id="phone" name="phone" value="{{ phone }}">
+                          </div>
+                          <div class="mb-3">
+                            <label for="dept" class="form-label">Department</label>
+                            <input type="number" class="form-control" id="dept" name="dept" value="{{ dept }}">
+                          </div>
+                          <div class="mb-3">
+                            <label for="Role" class="form-label">Role</label>
+                            <input type="text" class="form-control" id="Role" name="role" value="{{ role }}">
+                          </div>
+                          <div class="mb-3">
+                            <label for="Location" class="form-label">Location</label>
+                            <input type="text" class="form-control" id="Location" name="location" value="{{ location }}">
+                          </div>
+                          <div class="mb-3">
+                            <label for="Date" class="form-label">Hire Date</label>
+                            <input type="date" class="form-control" id="Date" name="hire_date" value="{{ hire_date }}">
+                          </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
